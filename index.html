@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#073b30">
+<meta name="description" content="Pro Investimento — protótipo educativo para aprender sobre renda fixa e simular rendimentos com dados fictícios.">
+<title>Pro Investimento — Protótipo educativo</title>
+<style>
+:root{--green:#073b30;--green2:#0c5a46;--lime:#8df0ae;--mint:#eaf8ef;--ink:#12352f;--muted:#617771;--white:#fff;--line:#dce9e2;--bg:#f5faf7;--shadow:0 12px 34px #073b3010}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg);line-height:1.5}
+a{color:inherit;text-decoration:none}button,input,select{font:inherit}button,a{touch-action:manipulation}
+.wrap{width:min(1120px,calc(100% - 32px));margin:auto}.demo{background:#d9f8e2;color:#07513b;text-align:center;padding:8px 12px;font-size:12px;font-weight:800;letter-spacing:.04em}
+header{background:var(--green);color:#fff;position:sticky;top:0;z-index:5;border-bottom:1px solid #ffffff1b}.nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{display:flex;align-items:center;gap:10px;font-weight:850;font-size:20px;line-height:1.05}.brand-mark{font-size:27px;color:var(--lime)}.brand small{display:block;font-size:11px;font-weight:450;color:#c5ddd3;margin-top:5px}.navlinks{display:flex;align-items:center;gap:22px;font-size:14px;color:#e1eee8}.navlinks a:hover{color:var(--lime)}.menu{display:none;background:transparent;border:1px solid #ffffff55;color:white;border-radius:10px;padding:8px 12px}
+.hero{background:radial-gradient(ellipse at 78% 25%,#12644a 0,transparent 35%),linear-gradient(120deg,#052c24,#073b30 70%,#05281f);color:#fff;padding:64px 0 58px;overflow:hidden}.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:42px;align-items:center}.eyebrow{display:inline-flex;border-radius:999px;background:#1c704f;color:#c6fbd4;padding:7px 12px;font-size:11px;font-weight:850;letter-spacing:.08em}.hero h1{font-size:clamp(32px,4.4vw,54px);line-height:1.08;letter-spacing:-.04em;margin:18px 0}.hero h1 em{font-style:normal;color:var(--lime)}.hero p{font-size:17px;max-width:610px;color:#d6e7df}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}.btn{display:inline-flex;justify-content:center;align-items:center;gap:8px;border:0;border-radius:999px;padding:13px 20px;font-weight:800;cursor:pointer;min-height:46px}.btn-primary{background:var(--lime);color:#073b30}.btn-outline{border:1px solid #c6e3d5;color:#fff;background:transparent}.btn-dark{background:var(--green);color:#fff}.btn:hover{filter:brightness(.97);transform:translateY(-1px)}.device{background:#071c18;border:1px solid #a7c2b5;border-radius:22px;padding:12px;box-shadow:0 25px 65px #0005;transform:rotate(1deg)}.device-top{display:flex;justify-content:space-between;font-size:12px;color:#b4d6c6;padding:8px}.device-card{background:#0d3027;border:1px solid #285347;border-radius:13px;padding:17px;margin:8px 0}.device-label{font-size:12px;color:#b5d2c6}.device-value{font-size:30px;font-weight:850;margin:4px 0}.chart{height:100px;width:100%;display:block}.mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.mini-grid .device-card{font-size:12px;margin:0}.features{background:#fff;padding:27px 0;border-bottom:1px solid var(--line)}.feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.feature{text-align:center;padding:14px 10px}.feature .ico{margin:auto auto 10px;background:var(--mint);width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font-size:22px}.feature b{display:block}.feature p{font-size:13px;color:var(--muted);margin:5px 0 0}
+section{padding:60px 0}.section-title{font-size:clamp(25px,3vw,36px);line-height:1.15;letter-spacing:-.025em;margin:8px 0 12px}.section-intro{color:var(--muted);max-width:680px;margin:0 0 28px}.section-tag{font-size:12px;font-weight:850;color:var(--green2);letter-spacing:.08em;text-transform:uppercase}.learn-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:34px;align-items:start}.products{display:grid;gap:10px}.product{display:flex;gap:13px;align-items:center;background:white;border:1px solid var(--line);border-radius:14px;padding:15px}.product-icon{width:44px;height:44px;flex-shrink:0;border-radius:50%;display:grid;place-items:center;background:var(--mint);font-size:21px}.product b{display:block}.product small{color:var(--muted);display:block;margin-top:2px}.sim-layout{display:grid;grid-template-columns:1fr .9fr;gap:28px;align-items:start}.panel{background:white;border:1px solid var(--line);border-radius:20px;padding:23px;box-shadow:var(--shadow)}.panel h3{margin:0 0 6px;font-size:20px}.muted{color:var(--muted);font-size:13px}.field{display:grid;gap:7px;margin:17px 0}.field label{font-size:13px;font-weight:750}.field input,.field select{width:100%;border:1px solid #cbdcd3;background:#fff;border-radius:10px;padding:12px;color:var(--ink);min-height:46px}.field input:focus,.field select:focus{outline:3px solid #8df0ae88;border-color:var(--green2)}.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.result{background:linear-gradient(120deg,#e9f9ef,#d7f5e3);border:1px solid #c8ead4;border-radius:14px;padding:17px;margin-top:16px}.result .amount{font-size:clamp(26px,4vw,34px);font-weight:900;color:#087b50;letter-spacing:-.03em}.result-row{display:flex;justify-content:space-between;gap:12px;font-size:13px;padding:7px 0;border-bottom:1px solid #c9e5d3}.result-row:last-child{border:0}.disclaimer{font-size:11px;color:#63786e;margin-top:12px}.bar-wrap{height:12px;border-radius:99px;background:#e4eee8;overflow:hidden;margin:13px 0}.bar{height:100%;width:50%;background:linear-gradient(90deg,#0b674a,#8beaa9);border-radius:99px}
+.learn-note{border-left:4px solid #69c98a;padding:12px 15px;background:#f0faf3;border-radius:0 10px 10px 0;font-size:13px;color:#3d5d50;margin-top:18px}.disclaimer-box{background:#fff6e2;border:1px solid #f1dfb6;border-radius:14px;padding:16px;color:#624d1d;font-size:13px}
+footer{background:#052c24;color:#d5e8df;padding:32px 0}.foot{display:flex;justify-content:space-between;gap:22px;flex-wrap:wrap}.foot small{color:#a9c6b9}.foot-links{display:flex;gap:16px;flex-wrap:wrap;font-size:13px}
+@media(max-width:800px){.navlinks{display:none;position:absolute;top:72px;left:0;right:0;background:#073b30;padding:18px 24px 24px;flex-direction:column;align-items:flex-start;border-top:1px solid #ffffff20}.navlinks.open{display:flex}.menu{display:block}.hero{padding:42px 0}.hero-grid,.learn-grid,.sim-layout{grid-template-columns:1fr}.device{max-width:550px;width:100%;margin:8px auto 0}.feature-grid{grid-template-columns:repeat(2,1fr)}section{padding:44px 0}.panel{padding:19px}.hero p{font-size:15px}}
+@media(max-width:420px){.wrap{width:min(100% - 24px,1120px)}.brand{font-size:17px}.hero h1{font-size:34px}.two{grid-template-columns:1fr}.actions .btn{width:100%}.feature{padding:12px 4px}.feature p{font-size:12px}}
+</style>
+</head>
+<body>
+<div class="demo">PROTÓTIPO EDUCATIVO • TODOS OS VALORES SÃO FICTÍCIOS • NÃO RECEBE DINHEIRO</div>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#inicio" aria-label="Pro Investimento - início"><span class="brand-mark">↗</span><span>Pro Investimento<small>Seu futuro financeiro começa aqui</small></span></a>
+    <nav class="navlinks" id="navlinks" aria-label="Navegação principal">
+      <a href="#inicio">Início</a><a href="#renda-fixa">Renda fixa</a><a href="#simulador">Simulador</a><a href="#educacao">Educação</a><a href="#sobre">Sobre</a>
+    </nav>
+    <button class="menu" id="menu" aria-expanded="false" aria-controls="navlinks">Menu ☰</button>
+  </div>
+</header>
+<main>
+<section class="hero" id="inicio">
+ <div class="wrap hero-grid">
+  <div>
+   <span class="eyebrow">APRENDA • SIMULE • PLANEJE</span>
+   <h1>Mais clareza para investir. <em>Mais confiança</em> para planejar.</h1>
+   <p>Conheça os conceitos da renda fixa, experimente cenários hipotéticos e aprenda a comparar prazos, taxas e riscos no seu ritmo.</p>
+   <div class="actions"><a class="btn btn-primary" href="#simulador">Experimentar simulador <span aria-hidden="true">→</span></a><a class="btn btn-outline" href="#educacao">Aprender sobre renda fixa</a></div>
+  </div>
+  <div class="device" aria-label="Ilustração de painel demonstrativo">
+   <div class="device-top"><b>↗ Pro Investimento</b><span>DEMO ●</span></div>
+   <div class="device-card"><div class="device-label">Patrimônio demonstrativo</div><div class="device-value">R$ 1.000,00</div><div class="device-label">Exemplo fictício — não é uma conta real</div>
+    <svg class="chart" viewBox="0 0 400 100" role="img" aria-label="Gráfico ilustrativo sem dados reais"><defs><linearGradient id="fill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#70e9a1" stop-opacity=".4"/><stop offset="1" stop-color="#70e9a1" stop-opacity="0"/></linearGradient></defs><path d="M0 82 L35 69 L68 74 L104 52 L137 59 L173 42 L205 51 L239 31 L271 43 L306 24 L337 30 L372 10 L400 17 L400 100 L0 100Z" fill="url(#fill)"/><path d="M0 82 L35 69 L68 74 L104 52 L137 59 L173 42 L205 51 L239 31 L271 43 L306 24 L337 30 L372 10 L400 17" fill="none" stroke="#83f0a9" stroke-width="3" stroke-linecap="round"/></svg>
+   </div>
+   <div class="mini-grid"><div class="device-card">↗<br><b>Simulador</b><br><span class="device-label">Cenários hipotéticos</span></div><div class="device-card">▦<br><b>Educação</b><br><span class="device-label">Conceitos de renda fixa</span></div></div>
+  </div>
+ </div>
+</section>
+<div class="features"><div class="wrap feature-grid">
+ <div class="feature"><div class="ico">🛡️</div><b>Transparência</b><p>Dados de demonstração claramente identificados.</p></div>
+ <div class="feature"><div class="ico">📊</div><b>Renda fixa</b><p>Aprenda taxas, prazos e tipos de títulos.</p></div>
+ <div class="feature"><div class="ico">🧮</div><b>Simulador</b><p>Faça cálculos hipotéticos gratuitamente.</p></div>
+ <div class="feature"><div class="ico">📘</div><b>Educação</b><p>Entenda conceitos antes de tomar decisões.</p></div>
+</div></div>
+<section id="renda-fixa">
+ <div class="wrap learn-grid">
+  <div><span class="section-tag">Conheça a renda fixa</span><h2 class="section-title">Entenda como seu dinheiro pode render.</h2><p class="section-intro">Na renda fixa, as regras de remuneração são definidas no momento da aplicação, mas isso não significa que todo investimento tenha retorno garantido ou que não exista risco.</p><div class="learn-note">Antes de investir, confira quem emite o título, a rentabilidade, o prazo, a liquidez, os impostos e os riscos envolvidos.</div></div>
+  <div class="products">
+   <article class="product"><div class="product-icon">🏛️</div><div><b>Tesouro Direto</b><small>Títulos públicos federais. Os preços podem variar se você vender antes do vencimento.</small></div></article>
+   <article class="product"><div class="product-icon">🏦</div><div><b>CDB</b><small>Título emitido por banco. Confira as condições, o emissor e a cobertura aplicável do FGC.</small></div></article>
+   <article class="product"><div class="product-icon">🌿</div><div><b>LCI e LCA</b><small>Títulos ligados aos setores imobiliário e do agronegócio, sujeitos a regras e condições próprias.</small></div></article>
+  </div>
+ </div>
+</section>
+<section id="simulador" style="background:#eaf5ee">
+ <div class="wrap">
+  <span class="section-tag">Ferramenta educativa</span><h2 class="section-title">Simulador de renda fixa</h2><p class="section-intro">Altere os campos para estimar um cenário hipotético. O cálculo é simplificado e não representa uma oferta ou promessa de retorno.</p>
+  <div class="sim-layout">
+   <form class="panel" id="sim-form">
+    <h3>Configure sua simulação</h3><p class="muted">Nenhum depósito será solicitado ou realizado.</p>
+    <div class="field"><label for="principal">Valor inicial (R$)</label><input id="principal" type="number" min="1" max="100000000" step="0.01" value="1000" required></div>
+    <div class="two">
+     <div class="field"><label for="rate">Taxa anual hipotética (%)</label><input id="rate" type="number" min="0" max="100" step="0.1" value="10" required></div>
+     <div class="field"><label for="months">Prazo (meses)</label><select id="months"><option value="3">3 meses</option><option value="6">6 meses</option><option value="12" selected>12 meses</option><option value="24">24 meses</option><option value="36">36 meses</option><option value="60">60 meses</option></select></div>
+    </div>
+    <div class="field"><label for="product-type">Tipo de cenário (apenas ilustrativo)</label><select id="product-type"><option value="gen">Taxa anual fixa hipotética</option><option value="cdi">Exemplo de percentual de uma taxa de referência</option></select></div>
+    <div id="ref-wrap" class="field" hidden><label for="ref-rate">Taxa de referência anual hipotética (%)</label><input id="ref-rate" type="number" min="0" max="100" step="0.1" value="10"></div>
+    <button class="btn btn-dark" type="submit" style="width:100%">Calcular cenário</button>
+    <p class="disclaimer">Cálculo bruto aproximado com capitalização mensal equivalente. Não inclui impostos, taxas, inflação, variações de mercado ou condições de produtos reais.</p>
+   </form>
+   <div class="panel" aria-live="polite">
+    <h3>Resultado demonstrativo</h3><p class="muted">Estimativa bruta ao fim do prazo selecionado</p>
+    <div class="result"><div class="muted">Saldo final hipotético</div><div class="amount" id="total">R$ 1.100,00</div><div class="muted" id="summary">Exemplo ilustrativo em 12 meses.</div><div class="bar-wrap"><div class="bar" id="bar"></div></div><div class="result-row"><span>Valor inicial</span><b id="out-principal">R$ 1.000,00</b></div><div class="result-row"><span>Rendimento bruto estimado</span><b id="profit">R$ 100,00</b></div><div class="result-row"><span>Taxa anual usada</span><b id="out-rate">10,00%</b></div></div>
+    <div class="disclaimer-box" style="margin-top:16px"><b>Importante:</b> este resultado é apenas matemático. Não é saldo real, cotação de mercado, aconselhamento financeiro ou garantia de rendimento.</div>
+   </div>
+  </div>
+ </div>
+</section>
+<section id="educacao">
+ <div class="wrap">
+  <span class="section-tag">Aprenda no seu ritmo</span><h2 class="section-title">Conceitos que vale conhecer</h2><p class="section-intro">Use estas definições como ponto de partida para estudar antes de tomar decisões financeiras.</p>
+  <div class="learn-grid">
+   <div class="product"><div class="product-icon">⏳</div><div><b>Liquidez</b><small>É a facilidade de transformar o investimento em dinheiro disponível. Alguns títulos têm carência ou prazo para resgate.</small></div></div>
+   <div class="product"><div class="product-icon">⚖️</div><div><b>Risco e emissor</b><small>Entenda quem deve pagar o título, a capacidade de pagamento do emissor e quais proteções, se houver, se aplicam.</small></div></div>
+   <div class="product"><div class="product-icon">🧾</div><div><b>Impostos e taxas</b><small>O rendimento líquido pode ser diferente do bruto. As regras dependem do produto, do prazo e da legislação vigente.</small></div></div>
+   <div class="product"><div class="product-icon">📉</div><div><b>Inflação</b><small>Compare o ganho nominal com a variação dos preços para compreender o poder de compra ao longo do tempo.</small></div></div>
+  </div>
+ </div>
+</section>
+<section id="sobre" style="padding-top:0">
+ <div class="wrap"><div class="disclaimer-box"><b>Sobre este projeto:</b> Pro Investimento é, nesta versão, um protótipo educativo. Não é banco, corretora ou instituição de investimento. Não abre contas, não recebe depósitos, não guarda dinheiro e não executa aplicações ou retiradas. Todos os valores de exemplo são fictícios.</div></div>
+</section>
+</main>
+<footer><div class="wrap foot"><div><a class="brand" href="#inicio"><span class="brand-mark">↗</span><span>Pro Investimento<small>Educação financeira começa com informação.</small></span></a><p><small>Protótipo educativo sem operações financeiras reais.</small></p></div><div class="foot-links"><a href="#renda-fixa">Renda fixa</a><a href="#simulador">Simulador</a><a href="#educacao">Educação</a><a href="#sobre">Sobre o projeto</a></div></div></footer>
+<script>
+const brl = n => n.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+const form=document.getElementById('sim-form');
+const type=document.getElementById('product-type');
+const refWrap=document.getElementById('ref-wrap');
+type.addEventListener('change',()=>{refWrap.hidden=type.value!=='cdi';calculate()});
+function calculate(e){
+ if(e)e.preventDefault();
+ const p=Number(document.getElementById('principal').value);
+ const r=Number(document.getElementById('rate').value);
+ const m=Number(document.getElementById('months').value);
+ const ref=Number(document.getElementById('ref-rate').value);
+ if(!Number.isFinite(p)||!Number.isFinite(r)||p<=0||r<0||r>100||p>100000000){return}
+ const annual=type.value==='cdi'?(ref*r/100):r;
+ const monthly=Math.pow(1+annual/100,1/12)-1;
+ const total=p*Math.pow(1+monthly,m);
+ const profit=total-p;
+ document.getElementById('total').textContent=brl(total);
+ document.getElementById('out-principal').textContent=brl(p);
+ document.getElementById('profit').textContent=brl(profit);
+ document.getElementById('out-rate').textContent=annual.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})+'% a.a.';
+ document.getElementById('summary').textContent=`Cenário hipotético para ${m} ${m===1?'mês':'meses'}; valor bruto aproximado.`;
+ document.getElementById('bar').style.width=Math.max(4,Math.min(100,(profit/Math.max(total,1))*100))+'%';
+}
+form.addEventListener('submit',calculate);
+document.getElementById('menu').addEventListener('click',()=>{const n=document.getElementById('navlinks');const open=n.classList.toggle('open');document.getElementById('menu').setAttribute('aria-expanded',String(open))});
+document.querySelectorAll('#navlinks a').forEach(a=>a.addEventListener('click',()=>{document.getElementById('navlinks').classList.remove('open');document.getElementById('menu').setAttribute('aria-expanded','false')}));
+calculate();
+</script>
+</body>
+</html>
